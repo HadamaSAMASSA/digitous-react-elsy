@@ -13,4 +13,5 @@ class Steps extends React.Component {
 
 export default Steps;
 //Je n'y comprenais rien juste avec le code mis sur notion mais en revisualisant la video, reecoutant les explications et pratiquant tout etait clair !
-//Mais je ne comprends pas encore pourquoi la taille de l'icone est inchangeable (fontSize present ou pas, ca ne change rien). 
+//Mais je ne comprends pas encore pourquoi la taille de l'icone est inchangeable (fontSize present ou pas, ca ne change rien).
+//CA Y EST J'AI REUSSI !!!!
