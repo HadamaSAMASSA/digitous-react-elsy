@@ -8,6 +8,7 @@ const heartMin = 80;
 const heartMax = 180;
 const stepsMin = 0;
 const stepsMax = 50000;
+const waterMin = 0;
 
 export class App extends React.Component {
   constructor(props){
@@ -17,7 +18,7 @@ export class App extends React.Component {
       heart: 120,
       temperature: -10,
       steps: 3000
-    }
+    };
   }
   render() {
     return (
@@ -26,6 +27,7 @@ export class App extends React.Component {
             <p>Heart : {heartMin}</p>
             <p>Temperature : {tempMin}</p>
             <p>Steps : {stepsMin}</p>
+            <p>Water : {waterMin}</p>
         </div>
         <div className="row">
           <Box icon={"local_drink"} color={"#3A85FF"} value={1.5} unit={"L"}/>
