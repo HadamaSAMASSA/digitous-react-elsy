@@ -13,25 +13,53 @@ export class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      water: 0,
+      water: 1.5,
       heart: 120,
       temperature: -10,
       steps: 3000
-    };
-  };
+    }
+    this.calculateWater = this.calculateWater.bind(this)
+  }
 
   onStepsChange = (value) => {
-    this.setState({steps:value.target.value})
+    this.setState({steps:value.target.value});
+    this.calculateWater()
   };
   onHeartChange = (value) => {
  /*   console.log("1=",value)
     console.log("2=",value.target)
     console.log("3=",value.target.value)*/
-    this.setState({heart:value.target.value})
+    this.setState({heart:value.target.value});
+    this.calculateWater()
   };
   onTempChange = (value) => {
-    this.setState({temperature:value.target.value})
+    this.setState({temperature:value.target.value});
+    this.calculateWater()
   };
+ calculateWater(){
+   let water = 1.5;
+    if(this.state.temperature > 20){
+      const nbSup20 = this.state.temperature - 20
+      const nbLiterToAdd = 0.02 * nbSup20;
+      water = water + nbLiterToAdd;
+    }
+
+    if (this.state.heart > 120) {
+      const nbHeartBeatSup = this.state.heart - 120;
+      const nbLiterToAdd = 0.0008 * nbHeartBeatSup
+      water = water + nbLiterToAdd
+      console.log('waterHeart', water)
+    }
+
+    if (this.state.steps > 10000) {
+      const nbHeartBeatSup = this.state.steps - 10000;
+      const nbLiterToAdd = 0.00002 * nbHeartBeatSup
+      water = water + nbLiterToAdd
+    }
+    this.setState({
+      water
+    })
+  }
   render() {
     return (
       <div className="container-fluid">
@@ -52,3 +80,8 @@ export class App extends React.Component {
 };
 
 export default App;
+
+/*@Adama
+tu peux mettre tout le code dans le render() principal mais si c'est long il est préférable de le decomposer en des subrender() et leur faire appel dans le principal
+On parle du meme fichier jsx 
+que ce soit app ou autre ce sont tous des composants react qui possedent une methode render()  donc c'est faisable pour tout composan*/
